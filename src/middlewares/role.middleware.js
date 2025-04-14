@@ -1,4 +1,4 @@
-import CustomError from "../utils/custom.error";
+import CustomError from "../utils/custom.error.js";
 
 const RoleMiddleware = (...roles) => {
   return async (req, res, next) => {

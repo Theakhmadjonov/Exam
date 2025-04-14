@@ -8,7 +8,7 @@ const AuthMiddleware = async (req, res, next) => {
     const token = req.headers.authorization
       ? req.headers.authorization.split(" ")[1]
       : undefined;
-    const payloadData = jwtService.verifyToken(token);
+    const payloadData = jwtService.verifyStaffToken(token);
     req.userId = payloadData.userId;
     req.userRole = payloadData.userRole;
     return next();

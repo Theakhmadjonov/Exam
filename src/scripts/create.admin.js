@@ -4,7 +4,7 @@ import "dotenv/config";
 
 const createSuperadmin = async (req, res, next) => {
   try {
-    const username = process.env.USERNAME;
+    const username = process.env.USER_NAME;
     const first_name = process.env.FIRST_NAME;
     const last_name = process.env.LAST_NAME;
     const role = process.env.ROLE;
@@ -15,7 +15,6 @@ const createSuperadmin = async (req, res, next) => {
     const existingUser = await StaffModel.findOne({ username });
     if (existingUser) return;
     const hashedPassword = await bcrypt.hash(password, 12);
-    console.log(hashedPassword);
     await StaffModel.create({
       first_name,
       last_name,

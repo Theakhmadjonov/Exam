@@ -3,11 +3,13 @@ import connectDb from "./config/db.js";
 import createSuperadmin from "./scripts/create.admin.js";
 import errorMiddleware from "./middlewares/error.middleware.js";
 import "dotenv/config";
+import Routes from "./routes/routes.js";
 
 const app = express();
 const PORT = process.env.PORT;
 
 app.use(express.json());
+app.use("/api", Routes());
 app.use(errorMiddleware);
 
 const init = async () => {
@@ -20,5 +22,5 @@ const init = async () => {
     process.exit(1);
   }
 };
-    
+
 init();
