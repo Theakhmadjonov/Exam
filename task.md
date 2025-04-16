@@ -402,6 +402,7 @@ CREATE TABLE schedule (
     "courseId": "course_id",
     "teacherId": "teacher_id",
     "startDate": "2025-05-01",
+    "end_date": "2026-01-01",
     "schedule": "Dushanba, Chorshanba, Juma 18:00-20:00",
     "maxStudents": 15
   }

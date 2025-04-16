@@ -6,9 +6,18 @@ import TeacherController from "../controllers/teacher.controller.js";
 const teacherRouter = Router();
 const controller = new TeacherController();
 
-teacherRouter.post("/students",
-    AuthMiddleware,
-    RoleMiddleware("admin"),
-    controller.addInfoToTeacher.bind(controller));
+teacherRouter.post(
+  "/teacher",
+  AuthMiddleware,
+  RoleMiddleware("admin"),
+  controller.addInfoToTeacher.bind(controller)
+);
+
+teacherRouter.get(
+  "/teacher",
+  AuthMiddleware,
+  RoleMiddleware("admin"),
+  controller.getAllTeachersInfo.bind(controller)
+);
 
 export default teacherRouter;

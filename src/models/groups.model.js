@@ -13,7 +13,7 @@ const GroupSchema = Schema(
     },
     teacher_id: {
       type: Schema.Types.ObjectId,
-      ref: "staff",
+      ref: "teacherInfo",
     },
     start_date: {
       type: Date,
@@ -21,6 +21,7 @@ const GroupSchema = Schema(
     },
     end_date: {
       type: Date,
+      required: true,
     },
     schedule: {
       type: String,

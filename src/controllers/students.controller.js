@@ -18,6 +18,19 @@ class StudentsController {
     }
   }
 
+  async addStudentGroupController(req, res, next) {
+    try {
+      const { studentId, groupId } = req.body;
+      const studentGroup = await this.studentService.addStudentGroup(studentId, groupId);
+      res.status(201).json({
+        success: true,
+        studentGroup: studentGroup,
+      });
+    } catch (error) {
+      next(error);
+    }
+  }
+
   async getAllStudentsController(req, res, next) {
     try {
       const { students, count } = await this.studentService.getAllStudent();

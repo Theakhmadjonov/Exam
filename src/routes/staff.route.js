@@ -11,6 +11,9 @@ staffRouter.post("/staffs",
     RoleMiddleware("superadmin", "admin"),
     controller.createStaffController.bind(controller));
 
-staffRouter.get("/staffs", controller.getAllStaffsController.bind(controller));
+staffRouter.get("/staffs",
+    AuthMiddleware,
+    RoleMiddleware("superadmin"),
+    controller.getAllStaffsController.bind(controller));
 
 export default staffRouter;

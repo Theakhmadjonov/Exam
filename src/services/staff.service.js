@@ -11,11 +11,11 @@ class StaffService {
 
   async createStaff(data) {
     try {
-      const staff = await this.staffModel.findOne(data.username);
+      const staff = await this.staffModel.findOne({ username: data.username });
       if (staff) {
         throw new CustomError("Username already exists", 400);
       }
-      const hashedPassword = await bcrypt.hash(password, 12);
+      const hashedPassword = await bcrypt.hash(data.password, 12);
       data.password = hashedPassword;
       const createdStaff = await this.staffModel.create(data);
       const newStaff = {

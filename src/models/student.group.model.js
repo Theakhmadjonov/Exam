@@ -18,7 +18,7 @@ const StudentGroupSchema = Schema(
     status: {
       type: String,
       enum: ["active", "inactive", "completed"],
-      default: "active",
+      default: "inactive",
     },
   },
   {

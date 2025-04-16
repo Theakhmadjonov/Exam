@@ -9,7 +9,7 @@ class TeacherService {
 
   async addInfoToTeacher(data) {
     try {
-      const findStaff = await this.teacherModel.findOne(data.staffId);
+      const findStaff = await this.teacherModel.findOne({ staffId: data.staff_id});
       if (findStaff) throw new CustomError("Teacher info already existed", 400);
       const teacher = await this.teacherModel.create(data);
       await teacher.populate("staff_id");
@@ -23,7 +23,7 @@ class TeacherService {
     try {
       const teachers = await this.teacherModel
         .find()
-        .populate("staff_id", { _id, first_name, last_name });
+        .populate("staff_id");
       return teachers;
     } catch (error) {
       throw new CustomError(error.message, 500);

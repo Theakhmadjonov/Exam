@@ -20,7 +20,7 @@ class StaffController {
 
   async getAllStaffsController(req, res, next) {
     try {
-      const { staffs, count } = await this.staffService.createStaff(data);
+      const { staffs, count } = await this.staffService.getAllStaff();
       res.status(201).json({
         success: true,
         count: count,
