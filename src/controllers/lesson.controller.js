@@ -8,7 +8,8 @@ class LessonController{
     async createLessonController(req, res, next) {
         try {
             const data = req.body;
-            const lesson = await this.lessonService.createLesson(data);
+            const created_by = req.userId;
+            const lesson = await this.lessonService.createLesson(data, created_by);
             res.status(201).json({
                 success: true,
                 lesson: lesson,
@@ -20,8 +21,8 @@ class LessonController{
 
     async getAllLessonsController(req, res, next) {
         try {
-            const groupId = req.params;
-            const { startDate, endDate } = req.url;
+            const { groupId } = req.params;
+            const { startDate, endDate } = req.query;
             const lessons = await this.lessonService.getAllLesson(groupId, startDate, endDate);
             res.status(200).json({
                 success: true,
@@ -34,4 +35,5 @@ class LessonController{
 
 
 }
+
 export default LessonController;

@@ -3,7 +3,6 @@ import AuthMiddleware from "../middlewares/auth.middleware.js";
 import RoleMiddleware from "../middlewares/role.middleware.js";
 import LessonController from "../controllers/lesson.controller.js";
 
-
 const lessonRouter = Router();
 const controller = new LessonController();
 
@@ -15,11 +14,10 @@ lessonRouter.post(
 );
 
 lessonRouter.get(
-    "/lesson",
-    AuthMiddleware,
-    RoleMiddleware("admin"),
-    controller.getAllLessonsController.bind(controller)
+  "/groups/:groupId/lessons",
+  AuthMiddleware,
+  RoleMiddleware("admin"),
+  controller.getAllLessonsController.bind(controller)
 );
-
 
 export default lessonRouter;

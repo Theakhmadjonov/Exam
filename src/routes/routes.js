@@ -1,3 +1,4 @@
+import attendanceRouter from "./attendance.roue.js";
 import authRouter from "./auht.route.js";
 import courseRouter from "./course.route.js";
 import groupRouter from "./group.route.js";
@@ -14,5 +15,6 @@ const Routes = () => [
   courseRouter,
   groupRouter,
   lessonRouter,
+  attendanceRouter
 ];
 export default Routes;
