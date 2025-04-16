@@ -18,8 +18,46 @@ class GroupController {
     }
   }
 
+  async addSheduleController(req, res, next) {
+    try {
+      const groupId = req.body.groupId;
+      const data = req.body;
+      const shedule = await this.groupService.addShedule(groupId, data);
+      res.status(201).json({
+        success: true,
+        shedule: shedule,
+      });
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  async getAllShedulesController(req, res, next) {
+    try {
+      const shedules = await this.groupService.getAllShedule();
+      res.status(200).json({
+        success: true,
+        shedules: shedules,
+      });
+    } catch (error) {
+      next(error);
+    }
+  }
+
   async updateGroupStatusController(req, res, next) {
-    
+    try {
+      const { status, groupId } = req.body;
+      const updatedGroupStatus = await this.groupService.updateGroupStatus(
+        status,
+        groupId
+      );
+      res.status(201).json({
+        success: true,
+        groupStatus: updatedGroupStatus,
+      });
+    } catch (error) {
+      next(error);
+    }
   }
 
   async getAllGroupsController(req, res, next) {

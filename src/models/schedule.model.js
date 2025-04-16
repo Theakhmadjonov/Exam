@@ -8,7 +8,7 @@ const ScheduleSchema = Schema(
       ref: "group",
     },
     day: {
-      type: String,
+      type: [String],
       enum: [
         "Monday",
         "Tuesday",
