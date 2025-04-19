@@ -37,22 +37,5 @@ class AttendanceController {
     }
   }
 
-  async getStudentAttendanceController(req, res, next) {
-    try {
-      const { studentId } = req.params;
-      const { startDate, endDate, groupId } = req.query;
-      const data = await this.attendanceService.getStudentAttendance(
-        studentId,
-        groupId,
-        startDate,
-        endDate
-      );
-      res.status(200).json({
-        data: data,
-      });
-    } catch (error) {
-      next(error);
-    }
-  }
 }
 export default AttendanceController;

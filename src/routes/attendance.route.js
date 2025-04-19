@@ -20,11 +20,4 @@ attendanceRouter.get(
   controller.getAttendanceByLessonIdController.bind(controller)
 );
 
-attendanceRouter.get(
-  "/students/:studentId/attendance",
-  AuthMiddleware,
-  RoleMiddleware("admin", "teacher", "student"),
-  controller.getStudentAttendanceController.bind(controller)
-);
-
 export default attendanceRouter;
