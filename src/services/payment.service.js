@@ -20,8 +20,8 @@ class PaymentService {
       if (!findStudent) throw new CustomError("student not found", 404);
       if (findStudent === "gratuated")
         throw new CustomError("Student already gratuated", 404);
-      const payment = await this.studentModel.create(data);
-      const newPayment = await this.studentModel
+      const payment = await this.paymentModel.create(data);
+      const newPayment = await this.paymentModel
         .findById(payment._id)
         .populate({
           path: "student_id",
